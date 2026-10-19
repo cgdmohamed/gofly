@@ -1,0 +1,708 @@
+{
+    "key": "group_gofly_settings",
+    "title": "إعدادات الموقع",
+    "fields": [
+        {
+            "key": "field_gofly_settings_tab1",
+            "label": "التواصل",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_gofly_settings_whatsapp",
+            "label": "رقم واتساب (بالصيغة الدولية)",
+            "name": "whatsapp",
+            "type": "text",
+            "instructions": "أرقام فقط مع رمز الدولة، مثل 966510131525. يستخدم لكل روابط واتساب ونموذج الحجز.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "966510131525",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_gofly_settings_phone_display",
+            "label": "الرقم كما يظهر للزوار",
+            "name": "phone_display",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "0510131525",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_gofly_settings_email",
+            "label": "البريد الإلكتروني",
+            "name": "email",
+            "type": "email",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "info@goflyy.travel",
+            "placeholder": ""
+        },
+        {
+            "key": "field_gofly_settings_hours",
+            "label": "ساعات العمل",
+            "name": "hours",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "يوميًا 9 ص – 11 م",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_gofly_settings_address_short",
+            "label": "العنوان المختصر",
+            "name": "address_short",
+            "type": "text",
+            "instructions": "يظهر في الشريط العلوي.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "الرياض - حي النسيم الغربي",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_gofly_settings_address_full",
+            "label": "العنوان الكامل",
+            "name": "address_full",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "الرياض - حي النسيم الغربي - احمد ابن حنبل",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_gofly_settings_map_embed",
+            "label": "رابط تضمين الخريطة",
+            "name": "map_embed",
+            "type": "url",
+            "instructions": "من Google Maps: مشاركة ← تضمين خريطة، انسخ قيمة src فقط.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_gofly_settings_map_link",
+            "label": "رابط الاتجاهات",
+            "name": "map_link",
+            "type": "url",
+            "instructions": "رابط موقع المكتب على Google Maps.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_gofly_settings_social",
+            "label": "حسابات التواصل الاجتماعي",
+            "name": "social",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "sub_fields": [
+                {
+                    "key": "field_gofly_settings_social__network",
+                    "label": "المنصة",
+                    "name": "network",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "35",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "facebook-f": "Facebook",
+                        "instagram": "Instagram",
+                        "x-twitter": "X (Twitter)",
+                        "snapchat": "Snapchat",
+                        "tiktok": "TikTok",
+                        "youtube": "YouTube",
+                        "whatsapp": "WhatsApp",
+                        "telegram": "Telegram",
+                        "linkedin-in": "LinkedIn"
+                    },
+                    "default_value": false,
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_gofly_settings_social__url",
+                    "label": "الرابط",
+                    "name": "url",
+                    "type": "url",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "65",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": ""
+                }
+            ],
+            "layout": "table",
+            "button_label": "إضافة حساب",
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_gofly_settings_social__network",
+            "pagination": 0,
+            "rows_per_page": 20
+        },
+        {
+            "key": "field_gofly_settings_tab2",
+            "label": "الهوية والرأس",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_gofly_settings_logo_light",
+            "label": "الشعار الأبيض",
+            "name": "logo_light",
+            "type": "image",
+            "instructions": "للرأس والفوتر (خلفية داكنة). يُستخدم الشعار المرفق مع القالب إذا تُرك فارغًا.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_gofly_settings_logo_dark",
+            "label": "الشعار الملون",
+            "name": "logo_dark",
+            "type": "image",
+            "instructions": "لقائمة الجوال وصندوق الكاتب (خلفية بيضاء).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_gofly_settings_header_cta",
+            "label": "زر الرأس",
+            "name": "header_cta",
+            "type": "link",
+            "instructions": "افتراضيًا يفتح صفحة \"احجز الآن\".",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        },
+        {
+            "key": "field_gofly_settings_tab3",
+            "label": "الأرقام",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_gofly_settings_stats",
+            "label": "أرقام الشركة",
+            "name": "stats",
+            "type": "repeater",
+            "instructions": "تظهر في الرئيسية وصفحة من نحن. أول ثلاثة تظهر أسفل عنوان الرئيسية. اكتب الرقم مثل +12 أو 98% ليعدّ تلقائيًا.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "sub_fields": [
+                {
+                    "key": "field_gofly_settings_stats__value",
+                    "label": "الرقم",
+                    "name": "value",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "30",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_gofly_settings_stats__label",
+                    "label": "الوصف",
+                    "name": "label",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "70",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": "",
+                    "prepend": "",
+                    "append": ""
+                }
+            ],
+            "layout": "table",
+            "button_label": "إضافة رقم",
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_gofly_settings_stats__value",
+            "pagination": 0,
+            "rows_per_page": 20
+        },
+        {
+            "key": "field_gofly_settings_tab4",
+            "label": "الشركاء",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_gofly_settings_partners_title",
+            "label": "عنوان الشريط",
+            "name": "partners_title",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "شركاؤنا في النجاح",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_gofly_settings_partners",
+            "label": "شعارات الشركاء",
+            "name": "partners",
+            "type": "gallery",
+            "instructions": "صور PNG بخلفية بيضاء أو شفافة، يفضل قصّ الهوامش.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "medium",
+            "insert": "append",
+            "library": "all",
+            "min": "",
+            "max": "",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_gofly_settings_tab5",
+            "label": "الباقات",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_gofly_settings_packages_title",
+            "label": "عنوان صفحة الباقات",
+            "name": "packages_title",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "باقات الرحلات",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_gofly_settings_packages_subtitle",
+            "label": "وصف صفحة الباقات",
+            "name": "packages_subtitle",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "باقات سياحية متكاملة بأسعار شفافة وخدمة عربية.",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_gofly_settings_packages_per_page",
+            "label": "عدد الباقات في الصفحة",
+            "name": "packages_per_page",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 9,
+            "min": 3,
+            "max": "",
+            "step": 1,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_gofly_settings_quote_form_id",
+            "label": "نموذج طلب عرض السعر (Fluent Forms)",
+            "name": "quote_form_id",
+            "type": "select",
+            "instructions": "يظهر عند الضغط على \"اطلب عرض السعر\" في صفحة الباقة. أضف للنموذج حقلًا مخفيًا قيمته {embed_post.title} لمعرفة اسم الباقة.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {},
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 1,
+            "ui": 1,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_gofly_settings_quote_hint",
+            "label": "ملاحظة بطاقة الحجز",
+            "name": "quote_hint",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "السعر النهائي حسب فئة الفندق وعدد الأفراد، شامل الضرائب.",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_gofly_settings_tab6",
+            "label": "الفوتر",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_gofly_settings_cta_title",
+            "label": "عنوان البطاقة الذهبية",
+            "name": "cta_title",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "جاهز لرحلتك القادمة؟",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_gofly_settings_cta_text",
+            "label": "نص البطاقة الذهبية",
+            "name": "cta_text",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "تواصل معنا الآن واحصل على عرض مخصص خلال دقائق.",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_gofly_settings_footer_about",
+            "label": "نبذة الفوتر",
+            "name": "footer_about",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "جو فلاي للسفر والسياحة: رحلات وباقات سياحية متكاملة، من حجز الطيران والفنادق إلى الجولات والتأشيرات، بدعم بالعربية على مدار الساعة.",
+            "placeholder": "",
+            "rows": 3,
+            "new_lines": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_gofly_settings_badges",
+            "label": "شارات التوثيق",
+            "name": "badges",
+            "type": "gallery",
+            "instructions": "السجل التجاري، ضريبة القيمة المضافة… تُستخدم الشارات المرفقة مع القالب إذا تُركت فارغة.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "medium",
+            "insert": "append",
+            "library": "all",
+            "min": "",
+            "max": "",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_gofly_settings_copyright",
+            "label": "سطر الحقوق",
+            "name": "copyright",
+            "type": "text",
+            "instructions": "استخدم {year} للسنة الحالية.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "© {year} جو فلاي للسفر والسياحة — س.ت 1010576472. جميع الحقوق محفوظة.",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "gofly-settings"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1792390998
+}

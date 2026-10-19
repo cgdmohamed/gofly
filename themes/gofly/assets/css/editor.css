@@ -1,0 +1,13 @@
+/* Block editor: mirror the front-end article typography (.entry-content). */
+@font-face { font-family: 'Bukra'; font-weight: 400; font-display: swap; src: url(../fonts/29ltbukraregular.ttf) format('truetype'); }
+@font-face { font-family: 'Bukra'; font-weight: 700; font-display: swap; src: url(../fonts/29ltbukrabold.ttf) format('truetype'); }
+
+body { font-family: 'Bukra', system-ui, sans-serif; font-size: 17px; line-height: 2; color: #2a3d54; }
+h1, h2, h3, h4 { color: #0b1f33; line-height: 1.45; }
+h2 { font-size: 28px; margin: 48px 0 16px; }
+h3 { font-size: 20px; }
+a { color: #043867; }
+blockquote, .wp-block-quote { margin: 32px 0; padding: 24px 28px; background: #f4f7fb; border: 0; border-radius: 12px; font-size: 18px; font-weight: 700; line-height: 1.8; color: #043867; }
+ul li::marker { color: #c99a2e; }
+img { border-radius: 12px; }
+figcaption { font-size: 14px; color: #4f6279; text-align: center; }

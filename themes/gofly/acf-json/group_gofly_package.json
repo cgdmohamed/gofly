@@ -1,0 +1,1131 @@
+{
+    "key": "group_gofly_package",
+    "title": "تفاصيل الباقة",
+    "fields": [
+        {
+            "key": "field_gofly_package_tab1",
+            "label": "عام",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_gofly_package_subtitle",
+            "label": "سطر تعريفي",
+            "name": "subtitle",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "موسكو · جولات بسائق خاص · خدمة عملاء بالعربية 24 ساعة",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_gofly_package_duration_days",
+            "label": "عدد الأيام",
+            "name": "duration_days",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "min": 1,
+            "max": "",
+            "step": 1,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_gofly_package_duration_nights",
+            "label": "عدد الليالي",
+            "name": "duration_nights",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "min": 0,
+            "max": "",
+            "step": 1,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_gofly_package_price",
+            "label": "السعر للفرد",
+            "name": "price",
+            "type": "number",
+            "instructions": "اتركه فارغًا لعرض \"اطلب عرض السعر\".",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "min": 0,
+            "max": "",
+            "step": 1,
+            "placeholder": "",
+            "prepend": "",
+            "append": "ر.س"
+        },
+        {
+            "key": "field_gofly_package_old_price",
+            "label": "السعر قبل الخصم",
+            "name": "old_price",
+            "type": "number",
+            "instructions": "اختياري. تُحسب نسبة الخصم تلقائيًا.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "min": 0,
+            "max": "",
+            "step": 1,
+            "placeholder": "",
+            "prepend": "",
+            "append": "ر.س"
+        },
+        {
+            "key": "field_gofly_package_rating",
+            "label": "التقييم",
+            "name": "rating",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "min": 0,
+            "max": 5,
+            "step": 0.1,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_gofly_package_group_size",
+            "label": "عدد الأفراد",
+            "name": "group_size",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "1 – 15",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_gofly_package_hotel_category",
+            "label": "فئة الفندق",
+            "name": "hotel_category",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "حسب التوفر",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_gofly_package_cancellation_note",
+            "label": "سياسة الإلغاء المختصرة",
+            "name": "cancellation_note",
+            "type": "textarea",
+            "instructions": "تظهر بارزة في بطاقة الحجز.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "rows": 2,
+            "new_lines": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_gofly_package_tab2",
+            "label": "الصور والفيديو",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_gofly_package_gallery",
+            "label": "صور المعرض",
+            "name": "gallery",
+            "type": "gallery",
+            "instructions": "الصورة الأولى هي الغلاف. تُستخدم الصورة البارزة إذا تُرك فارغًا.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "medium",
+            "insert": "append",
+            "library": "all",
+            "min": "",
+            "max": "",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_gofly_package_video",
+            "label": "فيديو (MP4)",
+            "name": "video",
+            "type": "file",
+            "instructions": "يظهر كالشريحة الثانية في المعرض.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_size": "",
+            "max_size": "",
+            "mime_types": "mp4,webm"
+        },
+        {
+            "key": "field_gofly_package_video_poster",
+            "label": "صورة غلاف الفيديو",
+            "name": "video_poster",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_gofly_package_tab3",
+            "label": "البرنامج",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_gofly_package_itinerary_title",
+            "label": "عنوان القسم",
+            "name": "itinerary_title",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "برنامج الرحلة",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_gofly_package_itinerary",
+            "label": "الأيام",
+            "name": "itinerary",
+            "type": "repeater",
+            "instructions": "يُرقَّم كل يوم تلقائيًا.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "sub_fields": [
+                {
+                    "key": "field_gofly_package_itinerary__title",
+                    "label": "عنوان اليوم",
+                    "name": "title",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "60",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_gofly_package_itinerary__overnight",
+                    "label": "المبيت",
+                    "name": "overnight",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "40",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "مبيت موسكو",
+                    "maxlength": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_gofly_package_itinerary__text",
+                    "label": "التفاصيل",
+                    "name": "text",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "rows": 2,
+                    "new_lines": "",
+                    "maxlength": ""
+                }
+            ],
+            "layout": "block",
+            "button_label": "إضافة يوم",
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_gofly_package_itinerary__title",
+            "pagination": 0,
+            "rows_per_page": 20
+        },
+        {
+            "key": "field_gofly_package_includes",
+            "label": "يشمل البرنامج",
+            "name": "includes",
+            "type": "textarea",
+            "instructions": "بند في كل سطر.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "rows": 6,
+            "new_lines": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_gofly_package_excludes",
+            "label": "لا يشمل",
+            "name": "excludes",
+            "type": "textarea",
+            "instructions": "بند في كل سطر.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "rows": 6,
+            "new_lines": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_gofly_package_tab4",
+            "label": "الفنادق",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_gofly_package_hotels_title",
+            "label": "عنوان القسم",
+            "name": "hotels_title",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "فنادق الإقامة",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_gofly_package_hotels_note",
+            "label": "ملاحظة",
+            "name": "hotels_note",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "يحدد فريقنا الفندق المناسب حسب التوفر وقت الحجز، والإفطار مشمول.",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_gofly_package_hotels",
+            "label": "الفنادق",
+            "name": "hotels",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "sub_fields": [
+                {
+                    "key": "field_gofly_package_hotels__tier",
+                    "label": "الفئة",
+                    "name": "tier",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "20",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "العرض المميز",
+                    "maxlength": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_gofly_package_hotels__stars",
+                    "label": "النجوم",
+                    "name": "stars",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "12",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "3": "3",
+                        "4": "4",
+                        "5": "5"
+                    },
+                    "default_value": "4",
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_gofly_package_hotels__name",
+                    "label": "اسم الفندق",
+                    "name": "name",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "34",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_gofly_package_hotels__note",
+                    "label": "ملاحظة",
+                    "name": "note",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "34",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "طابع حديث · 2 كم من المركز",
+                    "maxlength": "",
+                    "prepend": "",
+                    "append": ""
+                }
+            ],
+            "layout": "table",
+            "button_label": "إضافة فندق",
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_gofly_package_hotels__tier",
+            "pagination": 0,
+            "rows_per_page": 20
+        },
+        {
+            "key": "field_gofly_package_tab5",
+            "label": "السيارات والغرف",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_gofly_package_cars_title",
+            "label": "عنوان السيارات",
+            "name": "cars_title",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "السيارات المتاحة",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_gofly_package_cars",
+            "label": "السيارات",
+            "name": "cars",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "sub_fields": [
+                {
+                    "key": "field_gofly_package_cars__image",
+                    "label": "الصورة",
+                    "name": "image",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "20",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "preview_size": "medium",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": ""
+                },
+                {
+                    "key": "field_gofly_package_cars__capacity",
+                    "label": "السعة",
+                    "name": "capacity",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "30",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "من 1 إلى 3 أشخاص",
+                    "maxlength": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_gofly_package_cars__models",
+                    "label": "الموديلات",
+                    "name": "models",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "Hyundai Elantra · Toyota Camry",
+                    "maxlength": "",
+                    "prepend": "",
+                    "append": ""
+                }
+            ],
+            "layout": "table",
+            "button_label": "إضافة سيارة",
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_gofly_package_cars__image",
+            "pagination": 0,
+            "rows_per_page": 20
+        },
+        {
+            "key": "field_gofly_package_rooms_title",
+            "label": "عنوان تقسيم الغرف",
+            "name": "rooms_title",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "تقسيم الغرف",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_gofly_package_rooms",
+            "label": "تقسيم الغرف",
+            "name": "rooms",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "sub_fields": [
+                {
+                    "key": "field_gofly_package_rooms__label",
+                    "label": "عدد الأفراد",
+                    "name": "label",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "40",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "4 أفراد",
+                    "maxlength": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_gofly_package_rooms__split",
+                    "label": "الغرف",
+                    "name": "split",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "60",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "2 غرفة ثنائية",
+                    "maxlength": "",
+                    "prepend": "",
+                    "append": ""
+                }
+            ],
+            "layout": "table",
+            "button_label": "إضافة صف",
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_gofly_package_rooms__label",
+            "pagination": 0,
+            "rows_per_page": 20
+        },
+        {
+            "key": "field_gofly_package_rooms_note",
+            "label": "ملاحظة الغرف",
+            "name": "rooms_note",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "الأطفال أقل من 5 سنوات مجانًا (طفل واحد كحد أقصى)، وأكبر من 5 سنوات يُحسب كبالغ.",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_gofly_package_tab6",
+            "label": "معلومات ومطاعم",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_gofly_package_facts_title",
+            "label": "عنوان المعلومات",
+            "name": "facts_title",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "معلومات عن روسيا",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_gofly_package_facts",
+            "label": "معلومات الوجهة",
+            "name": "facts",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "sub_fields": [
+                {
+                    "key": "field_gofly_package_facts__label",
+                    "label": "البند",
+                    "name": "label",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "40",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "العاصمة",
+                    "maxlength": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_gofly_package_facts__value",
+                    "label": "القيمة",
+                    "name": "value",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "60",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "موسكو",
+                    "maxlength": "",
+                    "prepend": "",
+                    "append": ""
+                }
+            ],
+            "layout": "table",
+            "button_label": "إضافة معلومة",
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_gofly_package_facts__label",
+            "pagination": 0,
+            "rows_per_page": 20
+        },
+        {
+            "key": "field_gofly_package_restaurants_title",
+            "label": "عنوان المطاعم",
+            "name": "restaurants_title",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "مطاعم حلال مقترحة",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_gofly_package_restaurants_note",
+            "label": "ملاحظة المطاعم",
+            "name": "restaurants_note",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "الغداء والعشاء على حساب المسافر، والشركة توصلكم للمطاعم الحلال.",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_gofly_package_restaurants",
+            "label": "المطاعم",
+            "name": "restaurants",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "sub_fields": [
+                {
+                    "key": "field_gofly_package_restaurants__name",
+                    "label": "الاسم",
+                    "name": "name",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "40",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_gofly_package_restaurants__cuisine",
+                    "label": "النوع",
+                    "name": "cuisine",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "40",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "مطعم عربي",
+                    "maxlength": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_gofly_package_restaurants__rating",
+                    "label": "التقييم",
+                    "name": "rating",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "20",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "4.5",
+                    "maxlength": "",
+                    "prepend": "",
+                    "append": ""
+                }
+            ],
+            "layout": "table",
+            "button_label": "إضافة مطعم",
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_gofly_package_restaurants__name",
+            "pagination": 0,
+            "rows_per_page": 20
+        },
+        {
+            "key": "field_gofly_package_tab7",
+            "label": "السياسات",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_gofly_package_policies",
+            "label": "ملاحظات وسياسات",
+            "name": "policies",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "sub_fields": [
+                {
+                    "key": "field_gofly_package_policies__title",
+                    "label": "العنوان",
+                    "name": "title",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_gofly_package_policies__text",
+                    "label": "التفاصيل",
+                    "name": "text",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "rows": 2,
+                    "new_lines": "",
+                    "maxlength": ""
+                }
+            ],
+            "layout": "block",
+            "button_label": "إضافة بند",
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_gofly_package_policies__title",
+            "pagination": 0,
+            "rows_per_page": 20
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "package"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1792390998
+}

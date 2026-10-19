@@ -1,0 +1,44 @@
+{
+    "key": "group_gofly_package_category",
+    "title": "بيانات الفئة",
+    "fields": [
+        {
+            "key": "field_gofly_package_category_icon",
+            "label": "الأيقونة",
+            "name": "icon",
+            "type": "text",
+            "instructions": "اسم أيقونة من Material Symbols مثل flight أو hotel — راجع fonts.google.com/icons",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "category",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "taxonomy",
+                "operator": "==",
+                "value": "package_category"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1792390998
+}

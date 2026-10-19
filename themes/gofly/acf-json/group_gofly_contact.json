@@ -1,0 +1,159 @@
+{
+    "key": "group_gofly_contact",
+    "title": "محتوى صفحة التواصل",
+    "fields": [
+        {
+            "key": "field_gofly_contact_contact_info_note",
+            "label": "بيانات التواصل",
+            "name": "contact_info_note",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "رقم واتساب والبريد والعنوان وساعات العمل تُعدَّل من إعدادات الموقع.",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
+            "key": "field_gofly_contact_methods_eyebrow",
+            "label": "العنوان الصغير",
+            "name": "methods_eyebrow",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "40",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "طرق التواصل",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_gofly_contact_methods_title",
+            "label": "عنوان طرق التواصل",
+            "name": "methods_title",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "60",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "نسعد بخدمتك في أي وقت",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_gofly_contact_form_title",
+            "label": "عنوان النموذج",
+            "name": "form_title",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "أرسل لنا رسالة",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_gofly_contact_form_id",
+            "label": "النموذج (Fluent Forms)",
+            "name": "form_id",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {},
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 1,
+            "ui": 1,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_gofly_contact_form_text",
+            "label": "وصف النموذج",
+            "name": "form_text",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "املأ النموذج وسيتواصل معك أحد مستشاري السفر.",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_gofly_contact_office_title",
+            "label": "عنوان بطاقة الموقع",
+            "name": "office_title",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "مكتب جو فلاي في الرياض",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-templates/contact.php"
+            }
+        ]
+    ],
+    "menu_order": 1,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1792390998
+}

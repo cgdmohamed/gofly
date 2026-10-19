@@ -1,0 +1,63 @@
+{
+    "key": "group_gofly_menu_item",
+    "title": "عنصر القائمة المنسدلة",
+    "fields": [
+        {
+            "key": "field_gofly_menu_item_menu_icon",
+            "label": "الأيقونة",
+            "name": "menu_icon",
+            "type": "text",
+            "instructions": "للعناصر داخل القائمة المنسدلة فقط. اسم أيقونة من Material Symbols مثل flight أو hotel — راجع fonts.google.com/icons",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "location_on",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_gofly_menu_item_menu_subtitle",
+            "label": "سطر فرعي",
+            "name": "menu_subtitle",
+            "type": "text",
+            "instructions": "مثل: فرنسا",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "nav_menu_item",
+                "operator": "==",
+                "value": "location/primary"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1792390998
+}

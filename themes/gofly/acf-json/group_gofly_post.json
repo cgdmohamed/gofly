@@ -1,0 +1,47 @@
+{
+    "key": "group_gofly_post",
+    "title": "باقة مقترحة",
+    "fields": [
+        {
+            "key": "field_gofly_post_related_package",
+            "label": "الباقة في الشريط الجانبي",
+            "name": "related_package",
+            "type": "post_object",
+            "instructions": "اتركها فارغة لعرض أحدث باقة.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "package"
+            ],
+            "taxonomy": "",
+            "return_format": "id",
+            "multiple": 0,
+            "allow_null": 1,
+            "ui": 1
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "side",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1792390998
+}

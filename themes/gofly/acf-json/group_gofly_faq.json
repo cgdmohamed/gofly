@@ -1,0 +1,165 @@
+{
+    "key": "group_gofly_faq",
+    "title": "الأسئلة الشائعة",
+    "fields": [
+        {
+            "key": "field_gofly_faq_faq_eyebrow",
+            "label": "العنوان الصغير",
+            "name": "faq_eyebrow",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "40",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "أسئلة شائعة",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_gofly_faq_faq_title",
+            "label": "العنوان",
+            "name": "faq_title",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "60",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "إجابات سريعة قبل أن تحجز",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_gofly_faq_faq_text",
+            "label": "وصف مختصر",
+            "name": "faq_text",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "60",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "لم تجد إجابتك؟ فريقنا جاهز على واتساب.",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_gofly_faq_faq_button",
+            "label": "زر التواصل",
+            "name": "faq_button",
+            "type": "link",
+            "instructions": "يظهر في الصفحة الرئيسية فقط.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "40",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        },
+        {
+            "key": "field_gofly_faq_faq_items",
+            "label": "الأسئلة",
+            "name": "faq_items",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "sub_fields": [
+                {
+                    "key": "field_gofly_faq_faq_items__question",
+                    "label": "السؤال",
+                    "name": "question",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_gofly_faq_faq_items__answer",
+                    "label": "الإجابة",
+                    "name": "answer",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "rows": 2,
+                    "new_lines": "",
+                    "maxlength": ""
+                }
+            ],
+            "layout": "block",
+            "button_label": "إضافة سؤال",
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_gofly_faq_faq_items__question",
+            "pagination": 0,
+            "rows_per_page": 20
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_type",
+                "operator": "==",
+                "value": "front_page"
+            }
+        ],
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-templates/contact.php"
+            }
+        ]
+    ],
+    "menu_order": 5,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1792390998
+}
