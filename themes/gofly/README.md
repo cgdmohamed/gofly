@@ -34,6 +34,15 @@ Arabic (RTL) travel & tours theme for جو فلاي للسفر والسياحة,
    - *الفوتر — الروابط القانونية*: privacy / terms / cancellation.
 8. Add content: **الباقات → الوجهات** (image + country line), **فئات الباقات** (icon), then packages, posts and the home page sections.
 
+## Demo content (optional)
+
+**Appearance → استيراد المحتوى التجريبي** imports the design's content in about a minute: all pages with their templates and reading settings, every home section, 8 destinations, 5 categories, 9 packages (with the full Russia programme), 6 blog posts, the main menu with dropdown icons, the footer menus, and Site Settings (stats, partner logos, social links).
+
+- Destination and blog photos are downloaded from Unsplash. If a download fails, or you untick the option, a brand-coloured placeholder is used instead. Partner logos, cars and the Russia photos ship with the theme in `assets/demo/`.
+- Nothing that already exists is changed. **حذف المحتوى التجريبي** removes exactly what the import created, including its images.
+- ACF Pro must be active. Fluent Forms forms aren't created; build the two forms and select them afterwards (see step 5 above).
+- The demo data lives in `inc/demo/data.php`, if you want to adjust it.
+
 ## Content model
 
 | Type | What it holds |

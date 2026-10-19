@@ -18,3 +18,7 @@ require GOFLY_DIR . '/inc/post-types.php';
 require GOFLY_DIR . '/inc/acf.php';
 require GOFLY_DIR . '/inc/class-gofly-nav-walker.php';
 require GOFLY_DIR . '/inc/template-tags.php';
+
+if ( is_admin() ) {
+	require GOFLY_DIR . '/inc/demo/class-gofly-demo-importer.php';
+}
