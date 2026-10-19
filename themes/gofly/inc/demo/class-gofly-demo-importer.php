@@ -38,6 +38,9 @@ class Gofly_Demo_Importer {
 	/** @var int Images that fell back to placeholders. */
 	private $fallbacks = 0;
 
+	/** @var int[] Attachment IDs that are generated placeholders. */
+	private $placeholders = array();
+
 	public static function init() {
 		add_action( 'admin_menu', array( __CLASS__, 'menu' ) );
 		add_action( 'admin_post_' . self::ACTION, array( __CLASS__, 'handle' ) );
@@ -464,15 +467,28 @@ class Gofly_Demo_Importer {
 	/**
 	 * Attachment ID for an image reference ('u:<unsplash id>' or 'f:<file>').
 	 *
-	 * @param string $ref Reference.
+	 * @param string $ref         Reference.
+	 * @param bool   $placeholder Generate a placeholder when the image cannot be fetched.
 	 * @return int
 	 */
-	private function image( $ref ) {
+	private function image( $ref, $placeholder = true ) {
 		if ( ! $ref || ! is_string( $ref ) ) {
 			return 0;
 		}
 		if ( isset( $this->images[ $ref ] ) ) {
 			return $this->images[ $ref ];
+		}
+		if ( false !== strpos( $ref, '|' ) ) {
+			// Alternatives, e.g. 'u:<id>|f:<file>': the first that can be fetched wins;
+			// only the last one may fall back to a placeholder.
+			$alts = explode( '|', $ref );
+			foreach ( $alts as $i => $alt ) {
+				$id = $this->image( $alt, count( $alts ) - 1 === $i );
+				if ( $id && ! in_array( $id, $this->placeholders, true ) ) {
+					break;
+				}
+			}
+			return $this->images[ $ref ] = $id;
 		}
 		$tmp  = '';
 		$name = '';
@@ -487,6 +503,9 @@ class Gofly_Demo_Importer {
 			if ( is_wp_error( $tmp ) ) {
 				$tmp = '';
 			}
+		}
+		if ( ! $tmp && ! $placeholder ) {
+			return 0;
 		}
 		if ( ! $tmp ) {
 			$this->fallbacks++;
@@ -503,6 +522,9 @@ class Gofly_Demo_Importer {
 		}
 		update_post_meta( $id, '_gofly_demo', 1 );
 		$this->log['posts'][] = $id;
+		if ( 0 === strpos( $name, 'gofly-demo-' . md5( $ref ) ) ) {
+			$this->placeholders[] = $id;
+		}
 		return $this->images[ $ref ] = $id;
 	}
 

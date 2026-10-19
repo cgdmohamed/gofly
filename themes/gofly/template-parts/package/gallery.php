@@ -25,9 +25,12 @@ if ( ! $slides ) {
 			<?php foreach ( $slides as $i => $slide ) : ?>
 				<div class="swiper-slide">
 					<?php if ( 'video' === $slide['type'] ) : ?>
-						<video controls playsinline preload="metadata" src="<?php echo esc_url( $slide['url'] ); ?>"<?php echo $slide['poster'] ? ' poster="' . esc_url( wp_get_attachment_image_url( $slide['poster']['ID'], 'gofly-hero' ) ) . '"' : ''; ?>></video>
+						<video controls playsinline preload="metadata" src="<?php echo esc_url( $slide['url'] ); ?>"<?php echo $slide['poster'] ? ' poster="' . esc_url( wp_get_attachment_image_url( $slide['poster']['ID'], 'large' ) ) . '"' : ''; ?>></video>
 					<?php else : ?>
-						<?php echo gofly_image( $slide['image'], 'gofly-hero', $i ? array( 'loading' => 'lazy' ) : array( 'fetchpriority' => 'high' ) ); // phpcs:ignore ?>
+						<?php
+						// Full size + srcset: the browser picks the sharpest file for the slider width and screen density.
+						echo gofly_image( $slide['image'], 'full', array( 'sizes' => '(max-width: 1240px) 100vw, 1200px' ) + ( $i ? array( 'loading' => 'lazy' ) : array( 'fetchpriority' => 'high' ) ) ); // phpcs:ignore
+						?>
 					<?php endif; ?>
 				</div>
 			<?php endforeach; ?>
@@ -45,10 +48,10 @@ if ( ! $slides ) {
 				<?php foreach ( $slides as $slide ) : ?>
 					<div class="swiper-slide">
 						<?php if ( 'video' === $slide['type'] ) : ?>
-							<?php echo $slide['poster'] ? gofly_image( $slide['poster'], 'thumbnail', array( 'alt' => '' ) ) : '<span class="gThumbs__blank"></span>'; // phpcs:ignore ?>
+							<?php echo $slide['poster'] ? gofly_image( $slide['poster'], 'medium', array( 'alt' => '', 'sizes' => '128px' ) ) : '<span class="gThumbs__blank"></span>'; // phpcs:ignore ?>
 							<span class="gThumbs__play"><?php echo gofly_icon( 'play_circle', 'ms--fill' ); // phpcs:ignore ?></span>
 						<?php else : ?>
-							<?php echo gofly_image( $slide['image'], 'thumbnail', array( 'loading' => 'lazy' ) ); // phpcs:ignore ?>
+							<?php echo gofly_image( $slide['image'], 'medium', array( 'loading' => 'lazy', 'sizes' => '128px' ) ); // phpcs:ignore ?>
 						<?php endif; ?>
 					</div>
 				<?php endforeach; ?>

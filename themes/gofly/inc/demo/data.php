@@ -5,6 +5,7 @@
  * Images are referenced as:
  *   'u:<unsplash id>'   downloaded from images.unsplash.com at import time
  *   'f:<path>'          bundled file in assets/demo/
+ *   'u:<id>|f:<path>'   try each in turn
  * Unreachable images fall back to a generated placeholder.
  *
  * @package gofly
@@ -24,7 +25,8 @@ $russia = array(
 	'group_size'        => '1 – 15',
 	'hotel_category'    => 'حسب التوفر',
 	'cancellation_note' => 'البرنامج غير مسترد، ولا يُلغى الفندق مجانًا قبل أقل من 72 ساعة.',
-	'gallery'           => array( 'f:russia/d2.jpg', 'f:russia/d0.jpg', 'f:russia/d1.jpg', 'f:russia/d3.jpg', 'f:russia/d4.jpg', 'f:russia/d5.jpg' ),
+	// High-resolution photos from Unsplash; the small bundled shots are only a fallback.
+	'gallery'           => array( 'u:1513326738677-b964603b136d|f:russia/basil.jpg', 'u:1547448415-e9f5b28e570d|f:russia/metro.jpg', 'u:1520106212299-d99c443e4568|f:russia/city.jpg', 'u:1555939594-58d7cb561ad1|f:russia/airport.jpg' ),
 	'itinerary_title'   => 'برنامج الرحلة',
 	'itinerary'         => array(
 		array( 'title' => 'الاستقبال والراحة', 'text' => 'الاستقبال في أحد مطارات موسكو والتوجه إلى الفندق، مع مشاهدة بعض معالم العاصمة في الطريق. استلام الغرف ويوم للراحة.', 'overnight' => 'مبيت موسكو' ),
@@ -147,7 +149,7 @@ return array(
 
 	// title, destination, days, nights, price, old price, rating, categories, image, extra fields.
 	'packages'     => array(
-		'russia'   => array( 'برنامج روسيا السياحي', 'moscow', 5, 4, 3200, 4000, 4.9, array( 'europe', 'family' ), 'f:russia/d2.jpg', $russia ),
+		'russia'   => array( 'برنامج روسيا السياحي', 'moscow', 5, 4, 3200, 4000, 4.9, array( 'europe', 'family' ), 'u:1513326738677-b964603b136d|f:russia/basil.jpg', $russia ),
 		'paris'    => array( 'باريس: مدينة النور', 'paris', 6, 5, 5300, 0, 4.9, array( 'europe', 'honeymoon' ), 'u:1499856871958-5b9627545d1a', array() ),
 		'maldives' => array( 'جزر المالديف الفاخرة', 'maldives', 5, 4, 6600, 0, 5.0, array( 'asia', 'honeymoon' ), 'u:1514282401047-d79a71a590e8', array() ),
 		'istanbul' => array( 'سحر اسطنبول', 'istanbul', 7, 6, 3700, 0, 4.8, array( 'europe', 'family' ), 'u:1524231757912-21f4fe3a7200', array() ),
