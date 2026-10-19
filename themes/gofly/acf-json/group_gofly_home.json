@@ -1004,11 +1004,11 @@
             "append": ""
         },
         {
-            "key": "field_gofly_home_testi_items",
-            "label": "الآراء",
-            "name": "testi_items",
-            "type": "repeater",
-            "instructions": "",
+            "key": "field_gofly_home_testi_posts",
+            "label": "الآراء المعروضة",
+            "name": "testi_posts",
+            "type": "relationship",
+            "instructions": "اختر من «آراء المسافرين» في القائمة الجانبية، ورتّبها بالسحب. اتركها فارغة لعرض أحدث 6 آراء.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -1016,122 +1016,19 @@
                 "class": "",
                 "id": ""
             },
-            "sub_fields": [
-                {
-                    "key": "field_gofly_home_testi_items__name",
-                    "label": "الاسم",
-                    "name": "name",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "35",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "maxlength": "",
-                    "prepend": "",
-                    "append": ""
-                },
-                {
-                    "key": "field_gofly_home_testi_items__trip",
-                    "label": "الرحلة",
-                    "name": "trip",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "35",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "رحلة اسطنبول",
-                    "maxlength": "",
-                    "prepend": "",
-                    "append": ""
-                },
-                {
-                    "key": "field_gofly_home_testi_items__rating",
-                    "label": "التقييم",
-                    "name": "rating",
-                    "type": "select",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "15",
-                        "class": "",
-                        "id": ""
-                    },
-                    "choices": {
-                        "5": "5",
-                        "4": "4",
-                        "3": "3"
-                    },
-                    "default_value": "5",
-                    "return_format": "value",
-                    "multiple": 0,
-                    "allow_null": 0,
-                    "ui": 0,
-                    "ajax": 0,
-                    "placeholder": ""
-                },
-                {
-                    "key": "field_gofly_home_testi_items__avatar",
-                    "label": "الصورة",
-                    "name": "avatar",
-                    "type": "image",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "15",
-                        "class": "",
-                        "id": ""
-                    },
-                    "return_format": "array",
-                    "preview_size": "medium",
-                    "library": "all",
-                    "min_width": "",
-                    "min_height": "",
-                    "min_size": "",
-                    "max_width": "",
-                    "max_height": "",
-                    "max_size": "",
-                    "mime_types": ""
-                },
-                {
-                    "key": "field_gofly_home_testi_items__quote",
-                    "label": "الرأي",
-                    "name": "quote",
-                    "type": "textarea",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "rows": 2,
-                    "new_lines": "",
-                    "maxlength": ""
-                }
+            "post_type": [
+                "testimonial"
             ],
-            "layout": "block",
-            "button_label": "إضافة رأي",
-            "min": 0,
-            "max": 0,
-            "collapsed": "field_gofly_home_testi_items__name",
-            "pagination": 0,
-            "rows_per_page": 20
+            "taxonomy": "",
+            "filters": [
+                "search"
+            ],
+            "elements": [
+                "featured_image"
+            ],
+            "return_format": "id",
+            "min": "",
+            "max": 9
         },
         {
             "key": "field_gofly_home_tab9",
@@ -1216,5 +1113,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1792390998
+    "modified": 1792437588
 }

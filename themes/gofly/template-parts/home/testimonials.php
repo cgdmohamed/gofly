@@ -1,12 +1,22 @@
 <?php
 /**
- * Traveller testimonials.
+ * Traveller testimonials: the picked ones, or the latest six.
  *
  * @package gofly
  */
 
-$items = (array) gofly_field( 'testi_items', false, array() );
-if ( ! $items ) {
+$ids = (array) gofly_field( 'testi_posts', false, array() );
+if ( ! $ids ) {
+	$ids = get_posts(
+		array(
+			'post_type'      => 'testimonial',
+			'posts_per_page' => 6,
+			'orderby'        => array( 'menu_order' => 'ASC', 'date' => 'DESC' ),
+			'fields'         => 'ids',
+		)
+	);
+}
+if ( ! $ids ) {
 	return;
 }
 ?>
@@ -22,15 +32,10 @@ if ( ! $items ) {
 	);
 	?>
 	<div class="grid grid--280">
-		<?php foreach ( $items as $item ) : ?>
-			<figure class="card testimonial">
-				<?php echo gofly_stars( $item['rating'] ?: 5 ); // phpcs:ignore ?>
-				<blockquote class="testimonial__quote"><?php echo esc_html( $item['quote'] ); ?></blockquote>
-				<figcaption class="testimonial__author">
-					<span class="testimonial__avatar"><?php echo gofly_image( $item['avatar'], 'thumbnail', array( 'loading' => 'lazy', 'alt' => '' ) ); // phpcs:ignore ?></span>
-					<span><b><?php echo esc_html( $item['name'] ); ?></b><small><?php echo esc_html( $item['trip'] ); ?></small></span>
-				</figcaption>
-			</figure>
-		<?php endforeach; ?>
+		<?php
+		foreach ( $ids as $id ) {
+			get_template_part( 'template-parts/components/testimonial-card', null, array( 'post_id' => $id ) );
+		}
+		?>
 	</div>
 </section>

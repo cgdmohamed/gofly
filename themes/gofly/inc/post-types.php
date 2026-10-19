@@ -38,6 +38,30 @@ add_action(
 			)
 		);
 
+		// Traveller reviews: the title is the traveller's name, the featured image their photo.
+		register_post_type(
+			'testimonial',
+			array(
+				'labels'        => array(
+					'name'                  => __( 'آراء المسافرين', 'gofly' ),
+					'singular_name'         => __( 'رأي', 'gofly' ),
+					'add_new'               => __( 'إضافة رأي', 'gofly' ),
+					'add_new_item'          => __( 'إضافة رأي جديد', 'gofly' ),
+					'edit_item'             => __( 'تعديل الرأي', 'gofly' ),
+					'all_items'             => __( 'كل الآراء', 'gofly' ),
+					'search_items'          => __( 'بحث في الآراء', 'gofly' ),
+					'featured_image'        => __( 'صورة المسافر', 'gofly' ),
+					'set_featured_image'    => __( 'تعيين صورة المسافر', 'gofly' ),
+					'remove_featured_image' => __( 'إزالة الصورة', 'gofly' ),
+				),
+				'public'        => false,
+				'show_ui'       => true,
+				'menu_icon'     => 'dashicons-format-quote',
+				'menu_position' => 6,
+				'supports'      => array( 'title', 'thumbnail', 'page-attributes' ),
+			)
+		);
+
 		$taxonomy_args = array(
 			'hierarchical'       => true,
 			'public'             => true,
@@ -110,6 +134,72 @@ add_action(
 		if ( ! is_admin() && $query->is_main_query() && $query->is_post_type_archive( 'package' ) ) {
 			$query->set( 'posts_per_page', -1 );
 			$query->set( 'orderby', array( 'menu_order' => 'ASC', 'date' => 'DESC' ) );
+		}
+	}
+);
+
+add_filter( 'enter_title_here', fn( $text, $post ) => 'testimonial' === $post->post_type ? __( 'اسم المسافر', 'gofly' ) : $text, 10, 2 );
+
+/** Testimonials list: show the quote and rating next to the name. */
+add_filter(
+	'manage_testimonial_posts_columns',
+	fn( $columns ) => array_slice( $columns, 0, 2 ) + array(
+		'quote'  => __( 'الرأي', 'gofly' ),
+		'rating' => __( 'التقييم', 'gofly' ),
+	) + $columns
+);
+add_action(
+	'manage_testimonial_posts_custom_column',
+	function ( $column, $post_id ) {
+		if ( 'quote' === $column ) {
+			echo esc_html( wp_trim_words( (string) gofly_field( 'quote', $post_id ), 14 ) );
+		} elseif ( 'rating' === $column ) {
+			echo esc_html( str_repeat( '★', (int) ( gofly_field( 'rating', $post_id ) ?: 5 ) ) );
+		}
+	},
+	10,
+	2
+);
+
+/**
+ * One-time move of reviews typed into the old home-page list
+ * (before testimonials were a post type) into testimonial posts.
+ */
+add_action(
+	'admin_init',
+	function () {
+		if ( get_option( 'gofly_testimonials_migrated' ) ) {
+			return;
+		}
+		update_option( 'gofly_testimonials_migrated', 1 );
+		$home  = (int) get_option( 'page_on_front' );
+		$count = $home ? (int) get_post_meta( $home, 'testi_items', true ) : 0;
+		for ( $i = 0; $i < $count; $i++ ) {
+			$row = fn( $key ) => get_post_meta( $home, "testi_items_{$i}_{$key}", true );
+			if ( ! $row( 'quote' ) ) {
+				continue;
+			}
+			$id = wp_insert_post(
+				wp_slash(
+					array(
+						'post_type'   => 'testimonial',
+						'post_status' => 'publish',
+						'post_title'  => $row( 'name' ),
+						'menu_order'  => $i,
+					)
+				)
+			);
+			if ( $id && ! is_wp_error( $id ) ) {
+				update_post_meta( $id, 'quote', $row( 'quote' ) );
+				update_post_meta( $id, '_quote', 'field_gofly_testimonial_quote' );
+				update_post_meta( $id, 'trip', $row( 'trip' ) );
+				update_post_meta( $id, '_trip', 'field_gofly_testimonial_trip' );
+				update_post_meta( $id, 'rating', $row( 'rating' ) );
+				update_post_meta( $id, '_rating', 'field_gofly_testimonial_rating' );
+				if ( $row( 'avatar' ) ) {
+					set_post_thumbnail( $id, (int) $row( 'avatar' ) );
+				}
+			}
 		}
 	}
 );

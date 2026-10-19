@@ -166,6 +166,7 @@ class Gofly_Demo_Importer {
 		$this->import_pages( $data['pages'] );
 		$this->import_packages( $data['packages'] );
 		$this->import_posts( $data['posts'] );
+		$this->import_testimonials( $data['testimonials'] );
 		$this->import_home( $data['home'] );
 		$this->import_options( $data['options'] );
 		$this->import_menus( $data['menus'] );
@@ -269,6 +270,22 @@ class Gofly_Demo_Importer {
 			$this->thumbnail( $id, $p[3] );
 			if ( ! empty( $p[5] ) ) {
 				$this->set( 'post', 'related_package', array( 'package' => 'russia' ), $id );
+			}
+		}
+	}
+
+	private function import_testimonials( $testimonials ) {
+		foreach ( $testimonials as $order => $t ) {
+			$id = $this->post(
+				array(
+					'post_type'  => 'testimonial',
+					'post_title' => $t['name'],
+					'menu_order' => $order,
+				)
+			);
+			$this->thumbnail( $id, $t['avatar'] );
+			foreach ( array( 'quote', 'trip', 'rating' ) as $name ) {
+				$this->set( 'testimonial', $name, $t[ $name ], $id );
 			}
 		}
 	}

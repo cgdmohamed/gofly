@@ -1,0 +1,89 @@
+{
+    "key": "group_gofly_testimonial",
+    "title": "بيانات الرأي",
+    "fields": [
+        {
+            "key": "field_gofly_testimonial_quote",
+            "label": "الرأي",
+            "name": "quote",
+            "type": "textarea",
+            "instructions": "كلمات المسافر كما يجب أن تظهر.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "rows": 3,
+            "new_lines": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_gofly_testimonial_trip",
+            "label": "الرحلة",
+            "name": "trip",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "60",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "رحلة اسطنبول",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_gofly_testimonial_rating",
+            "label": "التقييم",
+            "name": "rating",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "40",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "5": "5",
+                "4": "4",
+                "3": "3"
+            },
+            "default_value": "5",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "testimonial"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "acf_after_title",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1792437588
+}

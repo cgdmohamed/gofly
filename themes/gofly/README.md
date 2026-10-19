@@ -50,8 +50,9 @@ Arabic (RTL) travel & tours theme for جو فلاي للسفر والسياحة,
 | `package` (CPT, archive `/packages/`) | Title, featured image, excerpt + ACF tabs: general (days, nights, price, old price → automatic discount badge, rating, group size, cancellation note), media (gallery + optional MP4 video), programme (days, includes/excludes — one item per line), hotels, cars, room split, destination facts, restaurants, policies. Every section hides itself when empty. |
 | `destination` (taxonomy) | Image, subtitle, optional custom link. Links open `/packages/?dest=slug` pre-filtered. |
 | `package_category` (taxonomy) | Icon. Used for the archive "الفئة" chips (`/packages/?cat=slug`). |
+| `testimonial` (CPT, admin only) | آراء المسافرين: title = traveller name, featured image = photo, plus quote, trip and rating. Order with the "الترتيب" box. |
 | Posts | Native blog. Every `<h2>` becomes a table-of-contents entry automatically; optional "باقة مقترحة" in the sidebar. |
-| Home page fields | Hero, services, destinations, packages, steps, gallery, Instagram, testimonials, blog headings, FAQ. Empty sections are hidden. |
+| Home page fields | Hero, services, destinations, packages, steps, gallery, Instagram, testimonials (pick and order them, or leave empty for the latest six), blog headings, FAQ. Empty sections are hidden. |
 
 ACF field groups are stored in `acf-json/` and load automatically (no import needed). Edit them in ACF → Field Groups if you need changes; ACF writes back to the same folder.
 
