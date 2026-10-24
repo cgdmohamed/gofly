@@ -27,10 +27,6 @@ if ( ! $ids ) {
 		array(
 			'eyebrow' => gofly_field( 'pkgs_eyebrow' ),
 			'title'   => gofly_field( 'pkgs_title' ),
-			'link'    => array(
-				'url'   => get_post_type_archive_link( 'package' ),
-				'title' => __( 'كل الباقات', 'gofly' ),
-			),
 		)
 	);
 	?>
@@ -48,4 +44,5 @@ if ( ! $ids ) {
 		}
 		?>
 	</div>
+	<?php get_template_part( 'template-parts/components/section-more', null, array( 'url' => get_post_type_archive_link( 'package' ), 'title' => __( 'عرض كل الباقات', 'gofly' ) ) ); ?>
 </section>

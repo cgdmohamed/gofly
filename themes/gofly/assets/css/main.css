@@ -115,6 +115,8 @@ button, summary { transition: color .2s var(--ease), background-color .2s var(--
 .section-intro { margin: 8px 0 0; color: var(--muted); font-size: 17px; }
 .link-more { display: inline-flex; align-items: center; gap: 6px; font-weight: 700; border-bottom: 2px solid var(--gold); }
 .link-more .ms { font-size: 16px; }
+.section-more { display: flex; justify-content: center; margin-top: 36px; }
+.section-more .btn .ms { font-size: 20px; }
 .link-icon { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; color: var(--navy); }
 
 .btn {

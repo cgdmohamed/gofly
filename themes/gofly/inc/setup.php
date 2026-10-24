@@ -94,3 +94,47 @@ function gofly_post_toc() {
 		$m
 	);
 }
+
+/** Cards per blog page (Site Settings → المدونة); page one also shows the featured post above them. */
+function gofly_blog_per_page() {
+	return max( 3, (int) gofly_option( 'blog_per_page', 12 ) );
+}
+
+add_action(
+	'pre_get_posts',
+	function ( $query ) {
+		if ( is_admin() || ! $query->is_main_query() || ! $query->is_home() ) {
+			return;
+		}
+		$per   = gofly_blog_per_page();
+		$paged = max( 1, (int) $query->get( 'paged' ) );
+		$query->set( 'posts_per_page', 1 === $paged ? $per + 1 : $per );
+		if ( $paged > 1 ) {
+			$query->set( 'offset', $per + 1 + ( $paged - 2 ) * $per );
+		}
+	}
+);
+
+/** Total blog pages, accounting for the extra featured post on page one. */
+function gofly_blog_pages() {
+	global $wp_query;
+	return 1 + (int) max( 0, ceil( ( (int) $wp_query->found_posts - gofly_blog_per_page() - 1 ) / gofly_blog_per_page() ) );
+}
+
+/**
+ * The blog design needs a Posts page. If none is set but a page with the
+ * slug "blog" exists, use it (once).
+ */
+add_action(
+	'admin_init',
+	function () {
+		if ( get_option( 'page_for_posts' ) || 'page' !== get_option( 'show_on_front' ) || get_option( 'gofly_blog_page_set' ) ) {
+			return;
+		}
+		$blog = get_page_by_path( 'blog' );
+		if ( $blog && 'publish' === $blog->post_status && (int) get_option( 'page_on_front' ) !== $blog->ID ) {
+			update_option( 'page_for_posts', $blog->ID );
+			update_option( 'gofly_blog_page_set', 1 );
+		}
+	}
+);

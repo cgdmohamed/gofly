@@ -25,7 +25,6 @@ $blog = gofly_blog_url();
 		array(
 			'eyebrow' => gofly_field( 'blog_eyebrow' ),
 			'title'   => gofly_field( 'blog_title' ),
-			'link'    => $blog ? array( 'url' => $blog, 'title' => __( 'كل المقالات', 'gofly' ) ) : array(),
 		)
 	);
 	?>
@@ -36,4 +35,5 @@ $blog = gofly_blog_url();
 		}
 		?>
 	</div>
+	<?php get_template_part( 'template-parts/components/section-more', null, array( 'url' => $blog, 'title' => __( 'عرض كل المقالات', 'gofly' ) ) ); ?>
 </section>

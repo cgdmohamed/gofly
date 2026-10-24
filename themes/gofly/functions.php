@@ -7,7 +7,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'GOFLY_VERSION', '1.1.4' );
+define( 'GOFLY_VERSION', '1.1.5' );
 define( 'GOFLY_DIR', get_template_directory() );
 define( 'GOFLY_URI', get_template_directory_uri() );
 

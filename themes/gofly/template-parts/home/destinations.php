@@ -19,7 +19,7 @@ if ( ! $terms ) {
 if ( ! $terms || is_wp_error( $terms ) ) {
 	return;
 }
-$all = gofly_template_url( 'destinations' );
+$all = gofly_template_url( 'destinations' ) ?: get_post_type_archive_link( 'package' );
 ?>
 <section class="section">
 	<?php
@@ -29,7 +29,6 @@ $all = gofly_template_url( 'destinations' );
 		array(
 			'eyebrow' => gofly_field( 'dest_eyebrow' ),
 			'title'   => gofly_field( 'dest_title' ),
-			'link'    => $all ? array( 'url' => $all, 'title' => __( 'عرض كل الوجهات', 'gofly' ) ) : array(),
 		)
 	);
 	?>
@@ -49,4 +48,5 @@ $all = gofly_template_url( 'destinations' );
 		}
 		?>
 	</div>
+	<?php get_template_part( 'template-parts/components/section-more', null, array( 'url' => $all, 'title' => __( 'عرض كل الوجهات', 'gofly' ) ) ); ?>
 </section>

@@ -570,6 +570,43 @@
             "append": ""
         },
         {
+            "key": "field_gofly_settings_tab_blog",
+            "label": "المدونة",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_gofly_settings_blog_per_page",
+            "label": "عدد المقالات في الصفحة",
+            "name": "blog_per_page",
+            "type": "number",
+            "instructions": "بطاقات المقالات في كل صفحة من المدونة (يُضاف المقال المميز أعلى الصفحة الأولى). 12 = أربعة صفوف.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 12,
+            "min": 3,
+            "max": 60,
+            "step": 3,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_gofly_settings_tab6",
             "label": "الفوتر",
             "name": "",
@@ -707,5 +744,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1792846648
+    "modified": 1792854206
 }

@@ -17,7 +17,7 @@ get_template_part( 'template-parts/components/page-hero', null, array( 'title' =
 			$gofly_cat = get_the_category();
 			?>
 			<a class="card featured-post" href="<?php the_permalink(); ?>">
-				<div class="featured-post__media media-zoom"><?php the_post_thumbnail( 'gofly-hero' ); ?></div>
+				<div class="featured-post__media media-zoom"><?php echo gofly_card_image( get_the_ID(), 'gofly-hero' ); // phpcs:ignore ?></div>
 				<div class="featured-post__body">
 					<span class="eyebrow"><?php esc_html_e( 'مقال مميز', 'gofly' ); ?><?php echo $gofly_cat ? ' · ' . esc_html( $gofly_cat[0]->name ) : ''; ?></span>
 					<h2 class="featured-post__title"><?php the_title(); ?></h2>
@@ -47,7 +47,7 @@ get_template_part( 'template-parts/components/page-hero', null, array( 'title' =
 				?>
 			</div>
 		<?php endif; ?>
-		<?php gofly_pagination(); ?>
+		<?php gofly_pagination( gofly_blog_pages() ); ?>
 	<?php else : ?>
 		<?php get_template_part( 'template-parts/components/empty-state', null, array( 'title' => __( 'لا توجد مقالات بعد', 'gofly' ), 'text' => '' ) ); ?>
 	<?php endif; ?>
