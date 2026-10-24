@@ -281,6 +281,12 @@ a.package-card:hover .btn { background: var(--navy-800); }
 .site-header__actions .btn { padding: 12px 26px; }
 .site-header__actions .btn .ms { font-size: 18px; }
 /* White header (Site Settings → الهوية والرأس) with the coloured logo. */
+.site-header--light .topbar { background: var(--soft); color: var(--navy); border-bottom: 1px solid var(--hairline); }
+.site-header--light .topbar__info > *, .site-header--light .topbar__social-link { color: var(--navy); font-weight: 500; }
+.site-header--light .topbar__info .fa-brands, .site-header--light .topbar__info .ms { color: #1f9d55; }
+.site-header--light .topbar__info a:hover, .site-header--light .topbar__social-link:hover { color: var(--gold); }
+.site-header--light .topbar__social-link { border-radius: 50%; transition: background .2s, color .2s; }
+.site-header--light .topbar__social-link:hover { background: #fff; }
 .site-header--light .site-header__bar { background: #fff; color: var(--ink); box-shadow: 0 1px 0 var(--hairline), 0 8px 24px rgba(2, 32, 64, .05); }
 .site-header--light .nav__link { color: var(--ink); }
 .site-header--light .nav__link:hover, .site-header--light .nav__item.is-current > .nav__link { color: var(--navy); border-bottom-color: var(--gold); }
