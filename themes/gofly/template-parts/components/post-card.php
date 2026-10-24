@@ -21,7 +21,7 @@ $pid  = $args['post_id'];
 $cat  = get_the_category( $pid );
 ?>
 <a class="post-card" href="<?php echo esc_url( get_permalink( $pid ) ); ?>">
-	<div class="post-card__media media-zoom"><?php echo get_the_post_thumbnail( $pid, 'gofly-card', array( 'loading' => 'lazy' ) ); ?></div>
+	<div class="post-card__media media-zoom"><?php echo gofly_card_image( $pid ); // phpcs:ignore ?></div>
 	<div class="post-card__meta">
 		<?php echo $cat ? esc_html( $cat[0]->name ) . ' · ' : ''; ?><?php echo esc_html( get_the_date( 'j F', $pid ) ); ?>
 	</div>

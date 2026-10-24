@@ -89,9 +89,9 @@ function gofly_breadcrumb() {
 			$items[] = esc_html( $pkg['destination'] );
 		}
 	} elseif ( is_singular( 'post' ) ) {
-		$blog = get_option( 'page_for_posts' );
+		$blog = gofly_blog_url();
 		if ( $blog ) {
-			$items[] = '<a href="' . esc_url( get_permalink( $blog ) ) . '">' . esc_html( get_the_title( $blog ) ) . '</a>';
+			$items[] = '<a href="' . esc_url( $blog ) . '">' . esc_html( get_option( 'page_for_posts' ) ? get_the_title( get_option( 'page_for_posts' ) ) : __( 'المدونة', 'gofly' ) ) . '</a>';
 		}
 		$cat = get_the_category();
 		if ( $cat ) {

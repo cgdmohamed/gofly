@@ -28,7 +28,7 @@ $pkg = gofly_package( $pid );
 	data-days="<?php echo esc_attr( $pkg['days'] ); ?>"
 	data-price="<?php echo esc_attr( $pkg['price'] ); ?>">
 	<div class="package-card__media media-zoom">
-		<?php echo get_the_post_thumbnail( $pid, 'gofly-card', array( 'loading' => 'lazy' ) ); ?>
+		<?php echo gofly_card_image( $pid ); // phpcs:ignore ?>
 		<?php if ( $pkg['days'] ) : ?>
 			<span class="badge badge--gold package-card__days"><?php echo gofly_icon( 'schedule' ); // phpcs:ignore ?><?php echo esc_html( gofly_duration( $pkg['days'] ) ); ?></span>
 		<?php endif; ?>

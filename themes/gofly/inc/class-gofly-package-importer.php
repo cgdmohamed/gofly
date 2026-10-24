@@ -211,8 +211,8 @@ class Gofly_Package_Importer {
 			return get_term_link( $term( $link['dest'], 'destination' ) );
 		} elseif ( ! empty( $link['cat'] ) && $term( $link['cat'], 'package_category' ) ) {
 			return get_term_link( $term( $link['cat'], 'package_category' ) );
-		} elseif ( ! empty( $link['blog'] ) && get_option( 'page_for_posts' ) ) {
-			return get_permalink( (int) get_option( 'page_for_posts' ) );
+		} elseif ( ! empty( $link['blog'] ) && gofly_blog_url() ) {
+			return gofly_blog_url();
 		} elseif ( ! empty( $link['archive'] ) ) {
 			return get_post_type_archive_link( $link['archive'] );
 		}

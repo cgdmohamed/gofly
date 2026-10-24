@@ -15,7 +15,7 @@ $ids = get_posts(
 if ( ! $ids ) {
 	return;
 }
-$blog = get_option( 'page_for_posts' );
+$blog = gofly_blog_url();
 ?>
 <section class="section">
 	<?php
@@ -25,7 +25,7 @@ $blog = get_option( 'page_for_posts' );
 		array(
 			'eyebrow' => gofly_field( 'blog_eyebrow' ),
 			'title'   => gofly_field( 'blog_title' ),
-			'link'    => $blog ? array( 'url' => get_permalink( $blog ), 'title' => __( 'كل المقالات', 'gofly' ) ) : array(),
+			'link'    => $blog ? array( 'url' => $blog, 'title' => __( 'كل المقالات', 'gofly' ) ) : array(),
 		)
 	);
 	?>

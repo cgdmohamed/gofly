@@ -86,7 +86,7 @@ while ( have_posts() ) :
 					$gofly_pkg = gofly_package( $gofly_promo );
 					?>
 					<a class="promo-card" href="<?php echo esc_url( get_permalink( $gofly_promo ) ); ?>">
-						<div class="promo-card__media media-zoom"><?php echo get_the_post_thumbnail( $gofly_promo, 'gofly-card', array( 'loading' => 'lazy' ) ); ?></div>
+						<div class="promo-card__media media-zoom"><?php echo gofly_card_image( $gofly_promo ); // phpcs:ignore ?></div>
 						<div class="promo-card__body">
 							<div class="promo-card__eyebrow"><?php esc_html_e( 'باقة جاهزة', 'gofly' ); ?></div>
 							<b class="promo-card__title"><?php echo esc_html( get_the_title( $gofly_promo ) ); ?></b>

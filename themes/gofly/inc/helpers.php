@@ -154,6 +154,48 @@ function gofly_lines( $text ) {
 }
 
 /**
+ * Card image for a post or package: featured image, else the first gallery
+ * photo (packages) or the first image in the content (posts), else a
+ * branded placeholder so cards never show an empty box.
+ *
+ * @param int    $post_id Post ID.
+ * @param string $size    Image size.
+ * @return string HTML.
+ */
+function gofly_card_image( $post_id, $size = 'gofly-card' ) {
+	$id = get_post_thumbnail_id( $post_id );
+	if ( ! $id && 'package' === get_post_type( $post_id ) ) {
+		$gallery = (array) gofly_field( 'gallery', $post_id, array() );
+		$id      = $gallery ? ( is_array( $gallery[0] ) ? $gallery[0]['ID'] : (int) $gallery[0] ) : 0;
+	}
+	if ( ! $id && preg_match( '/wp-image-(\d+)/', (string) get_post_field( 'post_content', $post_id ), $m ) ) {
+		$id = (int) $m[1];
+	}
+	if ( $id && wp_attachment_is_image( $id ) ) {
+		return wp_get_attachment_image( $id, $size, false, array( 'loading' => 'lazy', 'alt' => get_the_title( $post_id ) ) );
+	}
+	return '<span class="card-placeholder"><img src="' . esc_url( gofly_logo_url( 'light' ) ) . '" alt="" loading="lazy"></span>';
+}
+
+/**
+ * URL of the blog listing: the Posts page (Settings → Reading), a page with
+ * the slug "blog", or the home page when it lists posts.
+ *
+ * @return string
+ */
+function gofly_blog_url() {
+	$page = (int) get_option( 'page_for_posts' );
+	if ( $page && 'publish' === get_post_status( $page ) ) {
+		return get_permalink( $page );
+	}
+	if ( 'posts' === get_option( 'show_on_front' ) ) {
+		return home_url( '/' );
+	}
+	$blog = get_page_by_path( 'blog' );
+	return $blog && 'publish' === $blog->post_status ? get_permalink( $blog ) : '';
+}
+
+/**
  * Logo image URL (light logo for dark backgrounds, dark logo for white).
  *
  * @param string $variant 'light' or 'dark'.
