@@ -55,7 +55,7 @@ Arabic (RTL) travel & tours theme for جو فلاي للسفر والسياحة,
 | `image`, `gallery` | Optional photo URLs, downloaded into the Media Library. |
 | `owner_notes` | Optional list shown in the import report as things to review. |
 
-The same file can include `"pages": [{ "title", "slug", "template": "service", "fields": { … } }]` to create pages such as the service landing pages (content in `inc/demo/services.json`).
+The same file can include `"pages": [{ "title", "slug", "template": "service", "fields": { … } }]` to create pages such as the service landing pages (content in `inc/demo/services.json`). It can also carry `"home"` (home-page fields, with packages and destinations by slug) and `"menus"` (`location => { name, items }`), and the import screen can move the demo packages to the trash.
 
 New packages can be saved as drafts. Re-importing the same file updates the packages instead of duplicating them.
 
