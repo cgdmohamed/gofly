@@ -36,7 +36,7 @@ add_action(
 				'goflyBooking',
 				array(
 					'whatsapp' => preg_replace( '/\D+/', '', (string) gofly_option( 'whatsapp', '966510131525' ) ),
-					'brand'    => get_bloginfo( 'name' ),
+					'brand'    => apply_filters( 'gofly_booking_brand', 'GO FLY' ),
 				)
 			);
 		}

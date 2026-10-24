@@ -163,6 +163,7 @@
 
 		input.addEventListener('input', function () {
 			clearTimeout(timer);
+			delete input.dataset.cc;
 			var q = input.value.trim();
 			if (q.length < 2) { list.style.display = 'none'; return; }
 			timer = setTimeout(function () {
@@ -173,7 +174,7 @@
 						list.innerHTML = results.map(function (x) {
 							var place = [x.admin1, x.country].filter(Boolean).join('، ');
 							var value = (x.name + (x.country ? '، ' + x.country : '')).replace(/"/g, '');
-							return '<li data-v="' + value + '">' + icon('location_on') + '<div>' + x.name + '<small>' + place + '</small></div></li>';
+							return '<li data-v="' + value + '" data-name="' + x.name.replace(/"/g, '') + '" data-cc="' + (x.country_code || '') + '">' + icon('location_on') + '<div>' + x.name + '<small>' + place + '</small></div></li>';
 						}).join('');
 						list.style.display = results.length ? 'block' : 'none';
 					})
@@ -185,16 +186,94 @@
 			var li = e.target.closest('li');
 			if (!li) return;
 			input.value = li.dataset.v;
+			input.dataset.name = li.dataset.name;
+			input.dataset.cc = li.dataset.cc;
 			list.style.display = 'none';
 		});
 		input.addEventListener('blur', function () { setTimeout(function () { list.style.display = 'none'; }, 150); });
 	});
 
-	/* Send via WhatsApp */
+	/* Send via WhatsApp: a polite Arabic quote request shaped by the chosen tab. */
+	var MONTHS = ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو', 'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر'];
+
 	function formatDate(v) {
 		if (!v) return '';
 		var p = v.split('-');
-		return p[2] + '/' + p[1] + '/' + p[0];
+		return +p[2] + ' ' + MONTHS[+p[1] - 1] + ' ' + p[0];
+	}
+
+	function nights(a, b) {
+		return Math.round((Date.parse(b) - Date.parse(a)) / 864e5);
+	}
+
+	function flag(cc) {
+		return cc && cc.length === 2 ? ' ' + cc.toUpperCase().replace(/./g, function (c) { return String.fromCodePoint(127397 + c.charCodeAt(0)); }) : '';
+	}
+
+	// City as picked from the suggestions ("الرياض 🇸🇦"), or as typed.
+	function place(id) {
+		var input = $(id);
+		return input.dataset.cc ? input.dataset.name + flag(input.dataset.cc) : input.value.trim();
+	}
+
+	function count(n, one, two, few, many) {
+		return n === 1 ? one : n === 2 ? two : n <= 10 ? n + ' ' + few : n + ' ' + many;
+	}
+
+	function people() {
+		var adults = +$('ad').textContent, kids = +$('ch').textContent;
+		var text = count(adults + kids, 'شخص واحد', 'شخصان', 'أشخاص', 'شخصًا');
+		if (kids) text += ' (' + count(adults, 'بالغ واحد', 'بالغان', 'بالغين', 'بالغًا') + ' و' + count(kids, 'طفل واحد', 'طفلان', 'أطفال', 'طفلًا') + ')';
+		return text;
+	}
+
+	function bullets(list) {
+		return list.filter(function (l) { return l[1]; }).map(function (l) { return '•\t' + l[0] + ': ' + l[1]; });
+	}
+
+	function buildMessage() {
+		var subject = { flight: 'لتذكرة طيران', hotel: 'لحجز فندق', both: 'لباقة طيران وفندق' }[mode];
+		var lines = ['السلام عليكم ورحمة الله وبركاته،', 'أرغب في الحصول على عرض سعر ' + subject + (BRAND ? ' من ' + BRAND : '') + '، وفق التفاصيل التالية:'];
+
+		if (mode !== 'hotel') {
+			lines.push('✈️ تفاصيل الرحلة');
+			lines = lines.concat(bullets([
+				['من', place('from')],
+				['إلى', place('to')],
+				['تاريخ السفر', formatDate($('dep').value)],
+				['تاريخ العودة', oneWay ? '' : formatDate($('ret').value)],
+				['نوع الرحلة', oneWay ? 'ذهاب فقط' : 'ذهاب وعودة'],
+				['درجة السفر', $('cls').value],
+				['عدد المسافرين', people()]
+			]));
+		}
+		if (mode !== 'flight') {
+			var inDate = mode === 'hotel' ? $('cin').value : $('dep').value;
+			var outDate = mode === 'hotel' ? $('cout').value : (oneWay ? '' : $('ret').value);
+			var n = inDate && outDate ? nights(inDate, outDate) : 0;
+			var rooms = +$('rooms').textContent;
+			lines.push('🏨 تفاصيل الإقامة');
+			lines = lines.concat(bullets([
+				['المدينة', place(mode === 'hotel' ? 'city' : 'to')],
+				['تاريخ الدخول', formatDate(inDate)],
+				['تاريخ الخروج', formatDate(outDate)],
+				['عدد الليالي', n > 0 ? count(n, 'ليلة واحدة', 'ليلتان', 'ليالٍ', 'ليلة') : ''],
+				['عدد الغرف', count(rooms, 'غرفة واحدة', 'غرفتان', 'غرف', 'غرفة')],
+				['فئة الفندق', $('stars').value],
+				['عدد النزلاء', mode === 'hotel' ? people() : '']
+			]));
+		}
+
+		lines.push('👤 بيانات العميل');
+		lines = lines.concat(bullets([['الاسم', $('name').value.trim()], ['رقم التواصل', $('tel').value.trim()], ['ملاحظات', $('note').value.trim()]]));
+
+		var ask = {
+			flight: 'يرجى تزويدي بأفضل الأسعار المتاحة، مع توضيح اسم شركة الطيران، وموعد الإقلاع والوصول، ووزن الأمتعة المسموح به، والسعر الإجمالي شامل الضرائب.',
+			hotel: 'يرجى تزويدي بأفضل الخيارات المتاحة، مع توضيح اسم الفندق وموقعه، ونوع الغرفة، وهل الإفطار مشمول، والسعر الإجمالي شامل الضرائب.',
+			both: 'يرجى تزويدي بأفضل العروض المتاحة، مع توضيح اسم شركة الطيران ومواعيد الرحلات ووزن الأمتعة، واسم الفندق ونوع الغرفة، والسعر الإجمالي شامل الضرائب.'
+		}[mode];
+		lines.push(ask, 'شكرًا لكم، وأتطلع إلى عرضكم.');
+		return lines.join('\n');
 	}
 
 	byId('bk-send').addEventListener('click', function () {
@@ -206,23 +285,7 @@
 		invalid.forEach(function (id) { byId('f-' + id).classList.add('err'); });
 		if (invalid.length) { $(invalid[0]).focus(); return; }
 
-		var lines = ['*طلب حجز جديد' + (BRAND ? ' - ' + BRAND : '') + '*', 'النوع: ' + { flight: 'طيران', hotel: 'فندق', both: 'طيران + فندق' }[mode]];
-		if (mode !== 'hotel') {
-			lines.push(
-				'الرحلة: ' + (oneWay ? 'ذهاب فقط' : 'ذهاب وعودة') + ' (' + $('cls').value + ')',
-				'من: ' + $('from').value,
-				'إلى: ' + $('to').value,
-				'تاريخ الذهاب: ' + formatDate($('dep').value)
-			);
-			if (!oneWay && $('ret').value) lines.push('تاريخ العودة: ' + formatDate($('ret').value));
-		} else {
-			lines.push('الوجهة: ' + $('city').value, 'الدخول: ' + formatDate($('cin').value), 'الخروج: ' + formatDate($('cout').value));
-		}
-		if (mode !== 'flight') lines.push('عدد الغرف: ' + $('rooms').textContent, 'فئة الفندق: ' + $('stars').value);
-		lines.push('بالغون: ' + $('ad').textContent, 'أطفال: ' + $('ch').textContent, 'الاسم: ' + $('name').value, 'الجوال: ' + $('tel').value);
-		if ($('note').value.trim()) lines.push('ملاحظات: ' + $('note').value.trim());
-
-		window.open('https://wa.me/' + WA + '?text=' + encodeURIComponent(lines.join('\n')), '_blank', 'noopener');
+		window.open('https://wa.me/' + WA + '?text=' + encodeURIComponent(buildMessage()), '_blank', 'noopener');
 	});
 
 	setMode('flight');

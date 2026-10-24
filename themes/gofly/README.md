@@ -27,7 +27,7 @@ Arabic (RTL) travel & tours theme for جو فلاي للسفر والسياحة,
    - a *contact* form (name, mobile, email, destination, message; a radio field "نوع الطلب" renders as chips) → select it on the تواصل معنا page;
    - a *quote* form (name, mobile, travellers, hotel category) **plus a hidden field with the value `{embed_post.title}`** so each request carries the package name → select it in **إعدادات الموقع → الباقات**.
    The theme restyles Fluent Forms inputs, radios and the submit button to match the design.
-6. **إعدادات الموقع** (left admin menu): WhatsApp number (international, e.g. `966510131525`), phone, email, hours, address, map, social links, logos, stats, partner logos, footer texts and badges.
+6. **إعدادات الموقع** (left admin menu): WhatsApp number (international, e.g. `966510131525`), phone, email, hours, address, map, social links, logos and header colour (blue with the white logo, or white with the coloured logo), stats, partner logos, footer texts and badges.
 7. **Menus** (Appearance → Menus):
    - *القائمة الرئيسية*: top-level items; child items become the dropdown card. Each child has **الأيقونة** (Material Symbols name, e.g. `location_on`, `hotel`) and **سطر فرعي** fields.
    - *الفوتر — العمود الأول/الثاني/الثالث*: the menu **name** is the column title (e.g. "روابط سريعة").
@@ -55,6 +55,8 @@ Arabic (RTL) travel & tours theme for جو فلاي للسفر والسياحة,
 | `image`, `gallery` | Optional photo URLs, downloaded into the Media Library. |
 | `owner_notes` | Optional list shown in the import report as things to review. |
 
+The same file can include `"pages": [{ "title", "slug", "template": "service", "fields": { … } }]` to create pages such as the service landing pages (content in `inc/demo/services.json`).
+
 New packages can be saved as drafts. Re-importing the same file updates the packages instead of duplicating them.
 
 ## Content model
@@ -79,7 +81,7 @@ template-parts/
                    feature-card, accordion, faq-section, stats, empty-state
   home/            one file per home section
   package/         one file per package section + booking card, mobile bar, quote modal
-page-templates/    booking, contact, about, destinations
+page-templates/    booking, contact, about, destinations, service (landing page per service, own Fluent Form)
 assets/css/main.css   all styles (tokens at the top), editor.css for the block editor
 assets/js/         main.js (menu, dialogs, reveals, counters), packages.js (filters),
                    package.js (Swiper gallery), booking.js (WhatsApp booking widget)
