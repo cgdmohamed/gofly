@@ -51,7 +51,7 @@ Arabic (RTL) travel & tours theme for جو فلاي للسفر والسياحة,
 |---|---|
 | `title`, `slug`, `excerpt` | Post title, URL slug (used to match existing packages), card summary. |
 | `destination` | `{ "slug", "name", "subtitle" }`. Created if it doesn't exist. |
-| `categories` | Existing package category slugs, e.g. `["europe"]`. |
+| `categories` | Package category slugs, e.g. `["europe"]`. A top-level `"categories": [{ "slug", "name", "icon" }]` list creates missing ones first. |
 | `image`, `gallery` | Optional photo URLs, downloaded into the Media Library. |
 | `owner_notes` | Optional list shown in the import report as things to review. |
 

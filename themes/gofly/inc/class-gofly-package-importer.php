@@ -8,8 +8,9 @@
  * image / gallery URLs. Packages are matched by slug, so the same file
  * can be imported again after corrections.
  *
- * The file may also carry "pages" (e.g. service landing pages):
- * { title, slug, template, fields: { name: value } }.
+ * The file may also carry "categories" (package categories created when
+ * missing: { slug, name, icon }) and "pages" (e.g. service landing pages:
+ * { title, slug, template, fields: { name: value } }).
  *
  * @package gofly
  */
@@ -105,6 +106,7 @@ class Gofly_Package_Importer {
 		$file = $_FILES['file']['tmp_name'] ?? ''; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 		$data = $file && is_uploaded_file( $file ) ? json_decode( (string) file_get_contents( $file ), true ) : null;
 		$pages = (array) ( $data['pages'] ?? array() );
+		$cats  = (array) ( $data['categories'] ?? array() );
 		$data  = isset( $data[0] ) ? $data : (array) ( $data['packages'] ?? array() );
 
 		if ( ! function_exists( 'update_field' ) ) {
@@ -113,7 +115,7 @@ class Gofly_Package_Importer {
 			$report = __( 'الملف ليس ملف باقات JSON صالحًا.', 'gofly' );
 		} else {
 			$importer = new self();
-			$importer->run( $data, 'publish' === ( $_POST['status'] ?? '' ) ? 'publish' : 'draft', ! empty( $_POST['update'] ), $pages );
+			$importer->run( $data, 'publish' === ( $_POST['status'] ?? '' ) ? 'publish' : 'draft', ! empty( $_POST['update'] ), $pages, $cats );
 			$report = $importer->report;
 		}
 		set_transient( self::ACTION . '_' . get_current_user_id(), $report, HOUR_IN_SECONDS );
@@ -128,8 +130,9 @@ class Gofly_Package_Importer {
 	 * @param string $status   Status for new packages.
 	 * @param bool   $update   Overwrite packages with the same slug.
 	 * @param array  $pages    Page objects.
+	 * @param array  $cats     Package categories to create when missing.
 	 */
-	public function run( $packages, $status = 'draft', $update = true, $pages = array() ) {
+	public function run( $packages, $status = 'draft', $update = true, $pages = array(), $cats = array() ) {
 		if ( function_exists( 'set_time_limit' ) ) {
 			set_time_limit( 600 ); // phpcs:ignore Squiz.PHP.DiscouragedFunctions
 		}
@@ -140,6 +143,15 @@ class Gofly_Package_Importer {
 		$this->fields = self::group_fields( 'package' );
 		foreach ( array( 'page', 'service', 'faq' ) as $group ) {
 			$this->page_fields += self::group_fields( $group );
+		}
+
+		foreach ( $cats as $cat ) {
+			if ( ! empty( $cat['slug'] ) && ! get_term_by( 'slug', sanitize_title( $cat['slug'] ), 'package_category' ) ) {
+				$term = wp_insert_term( $cat['name'] ?? $cat['slug'], 'package_category', array( 'slug' => sanitize_title( $cat['slug'] ) ) );
+				if ( ! is_wp_error( $term ) && ! empty( $cat['icon'] ) ) {
+					update_field( 'field_gofly_package_category_icon', $cat['icon'], 'term_' . $term['term_id'] );
+				}
+			}
 		}
 
 		foreach ( $packages as $p ) {
@@ -239,7 +251,7 @@ class Gofly_Package_Importer {
 			}
 		}
 
-		// Categories: existing ones only.
+		// Categories: existing ones (including those created from the file's "categories" list).
 		$cats = array();
 		foreach ( (array) ( $p['categories'] ?? array() ) as $slug_cat ) {
 			$term = get_term_by( 'slug', sanitize_title( $slug_cat ), 'package_category' );
