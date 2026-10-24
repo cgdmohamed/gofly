@@ -14,7 +14,9 @@ gofly_package_heading( 'cars', 'directions_car', gofly_field( 'cars_title', fals
 <div class="grid grid--240">
 	<?php foreach ( $cars as $car ) : ?>
 		<div class="card car">
-			<div class="car__media"><?php echo gofly_image( $car['image'], 'medium_large', array( 'loading' => 'lazy' ) ); // phpcs:ignore ?></div>
+			<?php if ( ! empty( $car['image'] ) ) : ?>
+				<div class="car__media"><?php echo gofly_image( $car['image'], 'medium_large', array( 'loading' => 'lazy' ) ); // phpcs:ignore ?></div>
+			<?php endif; ?>
 			<div class="car__body">
 				<b><?php echo esc_html( $car['capacity'] ); ?></b>
 				<div class="car__models" dir="auto"><?php echo esc_html( $car['models'] ); ?></div>

@@ -43,6 +43,20 @@ Arabic (RTL) travel & tours theme for جو فلاي للسفر والسياحة,
 - ACF Pro must be active. Fluent Forms forms aren't created; build the two forms and select them afterwards (see step 5 above).
 - The demo data lives in `inc/demo/data.php`, if you want to adjust it.
 
+## Importing packages
+
+**الباقات → استيراد الباقات** creates or updates packages from a JSON file (`{"packages": [ … ]}`). Each package object uses the package field names from `acf-json/group_gofly_package.json` (repeaters as arrays of rows, `includes`/`excludes` one item per line), plus:
+
+| Key | Meaning |
+|---|---|
+| `title`, `slug`, `excerpt` | Post title, URL slug (used to match existing packages), card summary. |
+| `destination` | `{ "slug", "name", "subtitle" }`. Created if it doesn't exist. |
+| `categories` | Existing package category slugs, e.g. `["europe"]`. |
+| `image`, `gallery` | Optional photo URLs, downloaded into the Media Library. |
+| `owner_notes` | Optional list shown in the import report as things to review. |
+
+New packages can be saved as drafts. Re-importing the same file updates the packages instead of duplicating them.
+
 ## Content model
 
 | Type | What it holds |
