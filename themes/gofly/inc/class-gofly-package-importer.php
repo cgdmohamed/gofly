@@ -8,6 +8,9 @@
  * image / gallery URLs. Packages are matched by slug, so the same file
  * can be imported again after corrections.
  *
+ * The file may also carry "pages" (e.g. service landing pages):
+ * { title, slug, template, fields: { name: value } }.
+ *
  * @package gofly
  */
 
@@ -19,6 +22,9 @@ class Gofly_Package_Importer {
 
 	/** @var array Package ACF fields: name => field. */
 	private $fields = array();
+
+	/** @var array Page ACF fields (page, service, FAQ groups): name => field. */
+	private $page_fields = array();
 
 	/** @var array Per-package results for the report. */
 	private $report = array();
@@ -50,10 +56,10 @@ class Gofly_Package_Importer {
 				<div class="notice notice-error"><p><?php echo esc_html( $report ); ?></p></div>
 			<?php elseif ( $report ) : ?>
 				<div class="notice notice-success"><p>
-					<?php /* translators: %d: number of packages */ echo esc_html( sprintf( __( 'تمت معالجة %d باقة.', 'gofly' ), count( $report ) ) ); ?>
+					<?php /* translators: %d: number of items */ echo esc_html( sprintf( __( 'تمت معالجة %d عنصر.', 'gofly' ), count( $report ) ) ); ?>
 				</p></div>
 				<table class="widefat striped" style="max-width:960px">
-					<thead><tr><th><?php esc_html_e( 'الباقة', 'gofly' ); ?></th><th><?php esc_html_e( 'النتيجة', 'gofly' ); ?></th><th><?php esc_html_e( 'للمراجعة', 'gofly' ); ?></th></tr></thead>
+					<thead><tr><th><?php esc_html_e( 'العنصر', 'gofly' ); ?></th><th><?php esc_html_e( 'النتيجة', 'gofly' ); ?></th><th><?php esc_html_e( 'للمراجعة', 'gofly' ); ?></th></tr></thead>
 					<tbody>
 					<?php foreach ( $report as $row ) : ?>
 						<tr>
@@ -72,19 +78,19 @@ class Gofly_Package_Importer {
 
 			<div class="card" style="max-width:760px">
 				<h2><?php esc_html_e( 'ملف الباقات (JSON)', 'gofly' ); ?></h2>
-				<p><?php esc_html_e( 'تُطابَق الباقات بالرابط المختصر (slug): الموجودة تُحدَّث، والجديدة تُنشأ. تُنشأ الوجهات غير الموجودة تلقائيًا.', 'gofly' ); ?></p>
+				<p><?php esc_html_e( 'تُطابَق الباقات والصفحات بالرابط المختصر (slug): الموجودة تُحدَّث، والجديدة تُنشأ. تُنشأ الوجهات غير الموجودة تلقائيًا.', 'gofly' ); ?></p>
 				<form method="post" enctype="multipart/form-data" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
 					<?php wp_nonce_field( self::ACTION ); ?>
 					<input type="hidden" name="action" value="<?php echo esc_attr( self::ACTION ); ?>">
 					<p><input type="file" name="file" accept=".json,application/json" required></p>
 					<p>
-						<label for="gofly-status"><?php esc_html_e( 'حالة الباقات الجديدة:', 'gofly' ); ?></label>
+						<label for="gofly-status"><?php esc_html_e( 'حالة العناصر الجديدة:', 'gofly' ); ?></label>
 						<select id="gofly-status" name="status">
 							<option value="draft"><?php esc_html_e( 'مسودة (أراجعها وأضيف الصور ثم أنشرها)', 'gofly' ); ?></option>
 							<option value="publish"><?php esc_html_e( 'منشورة مباشرة', 'gofly' ); ?></option>
 						</select>
 					</p>
-					<p><label><input type="checkbox" name="update" value="1" checked> <?php esc_html_e( 'تحديث الباقات الموجودة بنفس الرابط المختصر', 'gofly' ); ?></label></p>
+					<p><label><input type="checkbox" name="update" value="1" checked> <?php esc_html_e( 'تحديث العناصر الموجودة بنفس الرابط المختصر', 'gofly' ); ?></label></p>
 					<?php submit_button( __( 'استيراد', 'gofly' ) ); ?>
 				</form>
 			</div>
@@ -98,15 +104,16 @@ class Gofly_Package_Importer {
 		}
 		$file = $_FILES['file']['tmp_name'] ?? ''; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 		$data = $file && is_uploaded_file( $file ) ? json_decode( (string) file_get_contents( $file ), true ) : null;
-		$data = $data['packages'] ?? $data;
+		$pages = (array) ( $data['pages'] ?? array() );
+		$data  = isset( $data[0] ) ? $data : (array) ( $data['packages'] ?? array() );
 
 		if ( ! function_exists( 'update_field' ) ) {
 			$report = __( 'إضافة ACF Pro غير مفعّلة.', 'gofly' );
-		} elseif ( ! is_array( $data ) || ! $data || ! isset( $data[0]['title'] ) ) {
+		} elseif ( ! isset( $data[0]['title'] ) && ! isset( $pages[0]['title'] ) ) {
 			$report = __( 'الملف ليس ملف باقات JSON صالحًا.', 'gofly' );
 		} else {
 			$importer = new self();
-			$importer->run( $data, 'publish' === ( $_POST['status'] ?? '' ) ? 'publish' : 'draft', ! empty( $_POST['update'] ) );
+			$importer->run( $data, 'publish' === ( $_POST['status'] ?? '' ) ? 'publish' : 'draft', ! empty( $_POST['update'] ), $pages );
 			$report = $importer->report;
 		}
 		set_transient( self::ACTION . '_' . get_current_user_id(), $report, HOUR_IN_SECONDS );
@@ -120,8 +127,9 @@ class Gofly_Package_Importer {
 	 * @param array  $packages Package objects.
 	 * @param string $status   Status for new packages.
 	 * @param bool   $update   Overwrite packages with the same slug.
+	 * @param array  $pages    Page objects.
 	 */
-	public function run( $packages, $status = 'draft', $update = true ) {
+	public function run( $packages, $status = 'draft', $update = true, $pages = array() ) {
 		if ( function_exists( 'set_time_limit' ) ) {
 			set_time_limit( 600 ); // phpcs:ignore Squiz.PHP.DiscouragedFunctions
 		}
@@ -129,14 +137,63 @@ class Gofly_Package_Importer {
 		require_once ABSPATH . 'wp-admin/includes/media.php';
 		require_once ABSPATH . 'wp-admin/includes/image.php';
 
-		$group        = json_decode( (string) file_get_contents( GOFLY_DIR . '/acf-json/group_gofly_package.json' ), true );
-		$this->fields = array_column( array_filter( $group['fields'], fn( $f ) => $f['name'] ), null, 'name' );
+		$this->fields = self::group_fields( 'package' );
+		foreach ( array( 'page', 'service', 'faq' ) as $group ) {
+			$this->page_fields += self::group_fields( $group );
+		}
 
 		foreach ( $packages as $p ) {
 			if ( ! empty( $p['title'] ) ) {
 				$this->import( $p, $status, $update );
 			}
 		}
+		foreach ( $pages as $p ) {
+			if ( ! empty( $p['title'] ) ) {
+				$this->import_page( $p, $status, $update );
+			}
+		}
+	}
+
+	/** Field definitions of one acf-json group: name => field. */
+	private static function group_fields( $group ) {
+		$json = json_decode( (string) file_get_contents( GOFLY_DIR . '/acf-json/group_gofly_' . $group . '.json' ), true );
+		return array_column( array_filter( $json['fields'], fn( $f ) => $f['name'] ), null, 'name' );
+	}
+
+	private function import_page( $p, $status, $update ) {
+		$slug     = sanitize_title( $p['slug'] ?? $p['title'] );
+		$existing = get_page_by_path( $slug, OBJECT, 'page' );
+		if ( $existing && ! $update ) {
+			$this->report[] = array( 'id' => $existing->ID, 'result' => 'skipped', 'notes' => array() );
+			return;
+		}
+		$post = array(
+			'post_type'  => 'page',
+			'post_title' => $p['title'],
+			'post_name'  => $slug,
+		);
+		$id   = $existing ? wp_update_post( wp_slash( $post + array( 'ID' => $existing->ID ) ) ) : wp_insert_post( wp_slash( $post + array( 'post_status' => $status ) ) );
+		if ( ! $id || is_wp_error( $id ) ) {
+			return;
+		}
+		if ( ! empty( $p['template'] ) ) {
+			update_post_meta( $id, '_wp_page_template', 'page-templates/' . sanitize_file_name( $p['template'] ) . '.php' );
+		}
+		foreach ( (array) ( $p['fields'] ?? array() ) as $name => $value ) {
+			if ( isset( $this->page_fields[ $name ] ) && null !== $value ) {
+				update_field( $this->page_fields[ $name ]['key'], $value, $id );
+			}
+		}
+		$notes = array_values( array_filter( (array) ( $p['owner_notes'] ?? array() ), 'is_string' ) );
+		if ( ! empty( $p['image'] ) ) {
+			$img = media_sideload_image( esc_url_raw( $p['image'] ), $id, null, 'id' );
+			is_wp_error( $img ) ? $notes[] = __( 'تعذّر تحميل الصورة.', 'gofly' ) : set_post_thumbnail( $id, $img );
+		}
+		$this->report[] = array(
+			'id'     => $id,
+			'result' => $existing ? 'updated' : 'created',
+			'notes'  => $notes,
+		);
 	}
 
 	private function import( $p, $status, $update ) {

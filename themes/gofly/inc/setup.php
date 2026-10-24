@@ -43,11 +43,13 @@ $GLOBALS['content_width'] = 780;
 add_filter( 'excerpt_length', fn() => 22 );
 add_filter( 'excerpt_more', fn() => '…' );
 
-/** Mark the transparent-header layout on the front page. */
+/** Mark the header layout: white header (Site Settings), or transparent over the front-page hero. */
 add_filter(
 	'body_class',
 	function ( $classes ) {
-		if ( is_front_page() ) {
+		if ( 'light' === gofly_option( 'header_style' ) ) {
+			$classes[] = 'has-light-header';
+		} elseif ( is_front_page() ) {
 			$classes[] = 'has-overlay-header';
 		}
 		return $classes;

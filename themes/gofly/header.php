@@ -1,11 +1,12 @@
 <?php
 /**
- * Site header: top bar, logo, primary menu, CTA and the mobile menu panel.
+ * Site header: top bar (phone + social), logo, primary menu, CTA and the mobile menu panel.
  *
  * @package gofly
  */
 
-$gofly_cta = gofly_option(
+$gofly_light = 'light' === gofly_option( 'header_style' );
+$gofly_cta   = gofly_option(
 	'header_cta',
 	array(
 		'url'    => gofly_template_url( 'booking' ),
@@ -26,17 +27,11 @@ $gofly_cta = gofly_option(
 <?php wp_body_open(); ?>
 <a class="skip-link screen-reader-text" href="#main"><?php esc_html_e( 'تخطي إلى المحتوى', 'gofly' ); ?></a>
 
-<header class="site-header<?php echo is_front_page() ? ' site-header--overlay' : ''; ?>">
+<header class="site-header<?php echo $gofly_light ? ' site-header--light' : ( is_front_page() ? ' site-header--overlay' : '' ); ?>">
 	<div class="topbar">
 		<div class="topbar__info">
 			<?php if ( gofly_option( 'phone_display' ) ) : ?>
 				<a href="<?php echo esc_url( gofly_whatsapp_url() ); ?>"><?php echo gofly_brand_icon( 'whatsapp' ); // phpcs:ignore ?><span dir="ltr"><?php echo esc_html( gofly_option( 'phone_display' ) ); ?></span></a>
-			<?php endif; ?>
-			<?php if ( gofly_option( 'hours' ) ) : ?>
-				<span><?php echo gofly_icon( 'schedule' ); // phpcs:ignore ?><?php echo esc_html( gofly_option( 'hours' ) ); ?></span>
-			<?php endif; ?>
-			<?php if ( gofly_option( 'address_short' ) ) : ?>
-				<span><?php echo gofly_icon( 'location_on' ); // phpcs:ignore ?><?php echo esc_html( gofly_option( 'address_short' ) ); ?></span>
 			<?php endif; ?>
 		</div>
 		<div class="topbar__social"><?php gofly_social_links( 'topbar__social-link' ); ?></div>
@@ -44,7 +39,7 @@ $gofly_cta = gofly_option(
 
 	<div class="site-header__bar">
 		<a class="site-logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-			<img src="<?php echo esc_url( gofly_logo_url( 'light' ) ); ?>" alt="<?php bloginfo( 'name' ); ?>" width="160" height="64">
+			<img src="<?php echo esc_url( gofly_logo_url( $gofly_light ? 'dark' : 'light' ) ); ?>" alt="<?php bloginfo( 'name' ); ?>" width="160" height="64">
 		</a>
 
 		<nav class="nav" aria-label="<?php esc_attr_e( 'القائمة الرئيسية', 'gofly' ); ?>">

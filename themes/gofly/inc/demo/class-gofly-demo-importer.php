@@ -158,6 +158,13 @@ class Gofly_Demo_Importer {
 		$this->fields = self::field_map();
 		$data         = require GOFLY_DIR . '/inc/demo/data.php';
 
+		// Service landing pages share their content with the package importer file.
+		foreach ( json_decode( (string) file_get_contents( GOFLY_DIR . '/inc/demo/services.json' ), true ) as $service ) {
+			$fields = $service['fields'];
+			unset( $fields['page_subtitle'] );
+			$data['pages'][ $service['slug'] ] = array( $service['title'], $service['template'], $service['fields']['page_subtitle'], $fields );
+		}
+
 		if ( ! get_option( 'permalink_structure' ) ) {
 			update_option( 'permalink_structure', '/%postname%/' );
 		}
@@ -220,7 +227,7 @@ class Gofly_Demo_Importer {
 				$this->set( 'page', 'page_subtitle', $page[2], $id );
 			}
 			foreach ( $page[3] as $name => $value ) {
-				$this->set( $this->group_of( $name, array( 'faq', 'about', 'contact' ) ), $name, $value, $id );
+				$this->set( $this->group_of( $name, array( 'faq', 'about', 'contact', 'service' ) ), $name, $value, $id );
 			}
 		}
 	}

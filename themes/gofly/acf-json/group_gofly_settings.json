@@ -92,25 +92,6 @@
             "append": ""
         },
         {
-            "key": "field_gofly_settings_address_short",
-            "label": "العنوان المختصر",
-            "name": "address_short",
-            "type": "text",
-            "instructions": "يظهر في الشريط العلوي.",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "الرياض - حي النسيم الغربي",
-            "placeholder": "",
-            "maxlength": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
             "key": "field_gofly_settings_address_full",
             "label": "العنوان الكامل",
             "name": "address_full",
@@ -273,11 +254,33 @@
             "mime_types": ""
         },
         {
+            "key": "field_gofly_settings_header_style",
+            "label": "لون الرأس",
+            "name": "header_style",
+            "type": "button_group",
+            "instructions": "الأبيض يعرض الشعار الملون، والأزرق يعرض الشعار الأبيض فوق صورة الواجهة.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "dark": "أزرق (الشعار الأبيض)",
+                "light": "أبيض (الشعار الملون)"
+            },
+            "allow_null": 0,
+            "default_value": "dark",
+            "layout": "horizontal",
+            "return_format": "value"
+        },
+        {
             "key": "field_gofly_settings_logo_dark",
             "label": "الشعار الملون",
             "name": "logo_dark",
             "type": "image",
-            "instructions": "لقائمة الجوال وصندوق الكاتب (خلفية بيضاء).",
+            "instructions": "للرأس الأبيض وقائمة الجوال وصندوق الكاتب (خلفية بيضاء). PNG شفاف بارتفاع 128px على الأقل. يُستخدم الشعار المرفق مع القالب إذا تُرك فارغًا.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -704,5 +707,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1792390998
+    "modified": 1792846648
 }
