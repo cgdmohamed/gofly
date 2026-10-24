@@ -21,4 +21,5 @@ require GOFLY_DIR . '/inc/template-tags.php';
 
 if ( is_admin() ) {
 	require GOFLY_DIR . '/inc/demo/class-gofly-demo-importer.php';
+	require GOFLY_DIR . '/inc/class-gofly-package-importer.php';
 }
